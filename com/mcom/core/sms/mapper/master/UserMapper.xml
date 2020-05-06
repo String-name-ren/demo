@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mcom.core.sms.mapper.master.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.mcom.core.sms.domain.entity.User" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="head_url" property="headUrl" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="phone_code" property="phoneCode" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="age" property="age" jdbcType="TINYINT" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="pan_card" property="panCard" jdbcType="VARCHAR" />
+    <result column="pan_issue_date" property="panIssueDate" jdbcType="VARCHAR" />
+    <result column="lon" property="lon" jdbcType="VARCHAR" />
+    <result column="lat" property="lat" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="register_addr" property="registerAddr" jdbcType="VARCHAR" />
+    <result column="mobile_seq" property="mobileSeq" jdbcType="VARCHAR" />
+    <result column="invite_code" property="inviteCode" jdbcType="VARCHAR" />
+    <result column="invite_id" property="inviteId" jdbcType="BIGINT" />
+    <result column="channel_id" property="channelId" jdbcType="BIGINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="deleted" property="deleted" jdbcType="TINYINT" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, password, head_url, phone, phone_code, email, sex, age, id_card, pan_card, 
+    pan_issue_date, lon, lat, province, city, district, register_addr, mobile_seq, invite_code, 
+    invite_id, channel_id, remark, status, deleted, gmt_created, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.mcom.core.sms.domain.entity.User" >
+    insert into user (id, name, password, 
+      head_url, phone, phone_code, 
+      email, sex, age, id_card, 
+      pan_card, pan_issue_date, lon, 
+      lat, province, city, 
+      district, register_addr, mobile_seq, 
+      invite_code, invite_id, channel_id, 
+      remark, status, deleted, 
+      gmt_created, gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{headUrl,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{phoneCode,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT}, #{age,jdbcType=TINYINT}, #{idCard,jdbcType=VARCHAR}, 
+      #{panCard,jdbcType=VARCHAR}, #{panIssueDate,jdbcType=VARCHAR}, #{lon,jdbcType=VARCHAR}, 
+      #{lat,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{district,jdbcType=VARCHAR}, #{registerAddr,jdbcType=VARCHAR}, #{mobileSeq,jdbcType=VARCHAR}, 
+      #{inviteCode,jdbcType=VARCHAR}, #{inviteId,jdbcType=BIGINT}, #{channelId,jdbcType=BIGINT}, 
+      #{remark,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{deleted,jdbcType=TINYINT}, 
+      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mcom.core.sms.domain.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="headUrl != null" >
+        head_url,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="phoneCode != null" >
+        phone_code,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="panCard != null" >
+        pan_card,
+      </if>
+      <if test="panIssueDate != null" >
+        pan_issue_date,
+      </if>
+      <if test="lon != null" >
+        lon,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="registerAddr != null" >
+        register_addr,
+      </if>
+      <if test="mobileSeq != null" >
+        mobile_seq,
+      </if>
+      <if test="inviteCode != null" >
+        invite_code,
+      </if>
+      <if test="inviteId != null" >
+        invite_id,
+      </if>
+      <if test="channelId != null" >
+        channel_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null" >
+        #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneCode != null" >
+        #{phoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=TINYINT},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="panCard != null" >
+        #{panCard,jdbcType=VARCHAR},
+      </if>
+      <if test="panIssueDate != null" >
+        #{panIssueDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null" >
+        #{lon,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddr != null" >
+        #{registerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileSeq != null" >
+        #{mobileSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null" >
+        #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null" >
+        #{inviteId,jdbcType=BIGINT},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreated != null" >
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mcom.core.sms.domain.entity.User" >
+    update user
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headUrl != null" >
+        head_url = #{headUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneCode != null" >
+        phone_code = #{phoneCode,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=TINYINT},
+      </if>
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="panCard != null" >
+        pan_card = #{panCard,jdbcType=VARCHAR},
+      </if>
+      <if test="panIssueDate != null" >
+        pan_issue_date = #{panIssueDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null" >
+        lon = #{lon,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="registerAddr != null" >
+        register_addr = #{registerAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileSeq != null" >
+        mobile_seq = #{mobileSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteCode != null" >
+        invite_code = #{inviteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null" >
+        invite_id = #{inviteId,jdbcType=BIGINT},
+      </if>
+      <if test="channelId != null" >
+        channel_id = #{channelId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mcom.core.sms.domain.entity.User" >
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      head_url = #{headUrl,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      phone_code = #{phoneCode,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      age = #{age,jdbcType=TINYINT},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      pan_card = #{panCard,jdbcType=VARCHAR},
+      pan_issue_date = #{panIssueDate,jdbcType=VARCHAR},
+      lon = #{lon,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      register_addr = #{registerAddr,jdbcType=VARCHAR},
+      mobile_seq = #{mobileSeq,jdbcType=VARCHAR},
+      invite_code = #{inviteCode,jdbcType=VARCHAR},
+      invite_id = #{inviteId,jdbcType=BIGINT},
+      channel_id = #{channelId,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      deleted = #{deleted,jdbcType=TINYINT},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

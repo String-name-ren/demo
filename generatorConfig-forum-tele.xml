@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="C:\Users\Administrator\Desktop\demo\mysql-connector-java-5.1.21.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 这里引入扩展插件   //goal: org.mybatis.generator:mybatis-generator-maven-plugin:1.3.2:generate 
+        <plugin type="com.sunrise.base.service.PaginationPlugin"/>-->
+        <!-- 注释 -->
+        <commentGenerator>
+            <!-- 是否生成注释代时间戳 -->
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://139.196.106.189:3308/test"
+                        userId="test"
+                        password="TeSt@1234">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- generate Model -->
+        <javaModelGenerator targetPackage="com.xcom.loan.telesale.domain.entity"
+                            targetProject="C:\Users\Administrator\Desktop\demo\">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- generate xml -->
+        <sqlMapGenerator targetPackage="com.xcom.loan.telesale.mapper.master"
+                         targetProject="C:\Users\Administrator\Desktop\demo\">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- generate Mapper -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xcom.loan.telesale.mapper.master"
+                             targetProject="C:\Users\Administrator\Desktop\demo\">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+
+        <table schema="" tableName="loan_complaint"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            <columnOverride column="datatime" javaType="java.lang.String"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
